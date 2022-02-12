@@ -79,6 +79,8 @@ for(mm in 1:TimeSteps){
     #JC.Victims    <- JC.Victims[JC.Victims %!in% Local_Species ] # Remove distrubed species from JC victims (bookeeping) 
     
     JC.Pred       <- c(table(factor(JC.Victims, levels = 1:S))) 
+    JC.Pred[JC.Pred>1] <- 1  
+    
     Predation     <- exp(-A*JC.Pred)
     Seeds         <-  Y*Predation*P
     
@@ -107,8 +109,8 @@ for(mm in 1:TimeSteps){
 df.PropsM <- as.matrix(df.Props)
 
 
-write.csv(df.PropsM,"TS_E48_A45_Y10_AD.csv",quote=F,row.names=F)
-write.csv(Mat.S,"DIST_E48_A45_Y10_AD.csv",quote=F,row.names=F)
+write.csv(df.PropsM,"TS_E48_A45_Y10_NF.csv",quote=F,row.names=F)
+write.csv(Mat.S,"DIST_E48_A45_Y10_NF.csv",quote=F,row.names=F)
 
 
 
